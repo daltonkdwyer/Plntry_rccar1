@@ -1,0 +1,8 @@
+PLNTRY ARCHITECTURE
+
+Firstly, look at this image, which is a diagram of the architecture: https://docs.google.com/presentation/d/1Yht4nZN5aHjeAyuiQytCdhY9se5ctExtC6bPFkWdN00/edit#slide=id.p
+
+Broadly, this project consists of three components:
+    1) A WebRTC server, that connects video from two different peers (car and driver)
+    2) A Flask websocket server that the driver's client has a URL to, which sends driving commands to the vehicle, e.g. STOP, FORWARD, LEFT, RIGHT, BACK etc.
+    3) A Rasberry Pi which is programmed to automatically start a browser and the Flask server on bootup
