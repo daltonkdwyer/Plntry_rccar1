@@ -21,4 +21,16 @@
         b) Server logins (need to put into your WebRTC code):
             Username: 999c14afe3cc4008b72f3aa0
             Password: oBpkY5NWEwvTK
+        c) All you have to do is feed the IP address of the TURN server into the object
 
+2. SERVER
+
+    1. "plntry_server1.py"
+        a) Flask / Websocket server
+        b) Sends out the client page
+        c) Recieves SDP information from clients and sends it between them so they can establish a connection with each other 
+
+
+3. CLIENT
+
+    1. 
