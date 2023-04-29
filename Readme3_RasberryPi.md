@@ -1,29 +1,31 @@
-This readme shows you how to set up a Rasberry pi. 
+0. SUMMARY
 
-There are four components to setting up the Pi:
+    Chapters: 
     1. Downloading dependencies
     2. Run Flask server on a local terminal on bootup
     3. Run Ngrok on bootup. The Flask server runs locally (127.0.0.1:5000), and it will need to be exposed to a public IP address
     4. Making Chromium (the Pi's browser) autoboot and go to the right Plntry URL
     (Sidenote: it is very unclear why you are using three different methods of autostarting a terminal on bootup)
 
-Firstly, hopefully you can just download the pre-existing image from the current SD card:
-    1. [PLACEHOLDER]
-        a. COME BACK TO THIS: Wipe the last SD card, and practice re-imaging with the current one
-        b. And obvi, store the processed image somewhere (Gdrive) so the next person can just download it
-    2. If not, you will need to download the Rasberry Pi imager to install Rasbian (the Raspberry Pi OS) onto your SD card.
-        a. Find the instructions here: https://www.raspberrypi.com/documentation/computers/getting-started.html
-        b. But if you just want to skip to getting the imager, it is here: https://www.raspberrypi.com/software/
+    Firstly, hopefully you can just download the pre-existing image from the current SD card:
+        1. [PLACEHOLDER]
+            a. COME BACK TO THIS: Wipe the last SD card, and practice re-imaging with the current one
+            b. And obvi, store the processed image somewhere (Gdrive) so the next person can just download it
+        2. If not, you will need to download the Rasberry Pi imager to install Rasbian (the Raspberry Pi OS) onto your SD card.
+            a. Find the instructions here: https://www.raspberrypi.com/documentation/computers/getting-started.html
+            b. But if you just want to skip to getting the imager, it is here: https://www.raspberrypi.com/software/`
 
 
 NOTE!!!: You should try to keep the pi's username as 'pi'. In one case you switched to daltonkdwyer, and now can't change back, which is a pain. Pay attention to this in the rest of the tutorial (you've called it out when it's needed)
 
-STEP 1: Downloading dependencies
+1. DOWNLOAD DEPENDENCIES
+
     1. This part shouldn't be too hard. Can do it from any folder
         a. |pip3 install flask_socketio
         b. (anything else?)
 
-STEP 2: Run Flask Websockets Server at startup
+2. RUN FLASK WEBSOCKET SERVER ON BOOTUP
+
     1. You make a Flask server run on a local terminal when the Pi boots up
         a) Tutorial here: https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup#method-3-systemd
         b) You will use option 3: "systemd"
@@ -48,8 +50,8 @@ STEP 2: Run Flask Websockets Server at startup
     3. To see if everything's running correctly (USEFUL!!!) type in this:
         |systemctl status app.service
 
+3. LAUNCH NGROK ON BOOTUP
 
-STEP 3: Launch Ngrok on boot
     1. You will launch Ngrok on boot, so it punches out to the right webpage
     2. Firstly, you'll need to download it
         a) https://dashboard.ngrok.com/get-started/setup
@@ -71,8 +73,8 @@ STEP 3: Launch Ngrok on boot
         | screen -d -m /home/pi/./ngrok http --subdomain=plntry33 5000
             - OR replace the pi with daltonkdwyer as usual
 
+4. LAUNCH CHROMIUM WEBPAGE ON BOOT
 
-STEP 4: Launch Chromium on boot, to the right Plntry webpage
     1. You wil xterminal to make a terminal run on startup
         a) Tutorial here: https://forums.raspberrypi.com/viewtopic.php?t=66206 (ctrl-f Ragnar)
         b) Install the right package:
