@@ -2,9 +2,10 @@ This readme shows you how to set up a Rasberry pi.
 
 There are four components to setting up the Pi:
     1. Downloading dependencies
-    2. Run Flask server on a local terminal
-    3. Making Ngrok run at startup. The server runs locally (127.0.0.1:5000), and it will need to be exposed to a public IP address
+    2. Run Flask server on a local terminal on bootup
+    3. Run Ngrok on bootup. The Flask server runs locally (127.0.0.1:5000), and it will need to be exposed to a public IP address
     4. Making Chromium (the Pi's browser) autoboot and go to the right Plntry URL
+    (Sidenote: it is very unclear why you are using three different methods of autostarting a terminal on bootup)
 
 Firstly, hopefully you can just download the pre-existing image from the current SD card:
     1. [PLACEHOLDER]
@@ -20,13 +21,14 @@ NOTE!!!: You should try to keep the pi's username as 'pi'. In one case you switc
 STEP 1: Downloading dependencies
     1. This part shouldn't be too hard. Can do it from any folder
         a. |pip3 install flask_socketio
+        b. (anything else?)
 
 STEP 2: Run Flask Websockets Server at startup
-    1. You will run a Flask server on a local terminal like usual
+    1. You make a Flask server run on a local terminal when the Pi boots up
         a) Tutorial here: https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup#method-3-systemd
         b) You will use option 3: "systemd"
-            - There is one bug in the tutorial. In the command to start the tutorial, you need to put "-u pi" as shown below. 
-            - See here, last response: https://forums.raspberrypi.com/viewtopic.php?t=306352
+            - There is one bug in the tutorial. In the command to start the tutorial, you need to put "-u pi" which you have highlighted below. 
+                - See here, last response: https://forums.raspberrypi.com/viewtopic.php?t=306352
     2. Commands to type:
         a) Go into the systemd folder, and create a new .service doc:
         | sudo nano /lib/systemd/system/app.service
@@ -38,10 +40,11 @@ STEP 2: Run Flask Websockets Server at startup
         ExecStart=sudo -u pi python /home/pi/rc_car1/app.py    (OR put in daltonkdwyer instead of pi!!!)
         [Install]
         WantedBy=multi-user.target
-        c) Tell systemd to recognize the service with (you will need to enter this command every time you change the file!!!)
-        |sudo systemctl daemon-reload
-        d) Finally, tell systemd that we want the service to start on boot:
-        |sudo systemctl enable app.service
+        c) And then do the following two commands:
+            i) Tell systemd to recognize the service with (you will need to enter this command every time you change the file!!!)
+            |sudo systemctl daemon-reload
+            ii) Finally, tell systemd that we want the service to start on boot:
+            |sudo systemctl enable app.service
     3. To see if everything's running correctly (USEFUL!!!) type in this:
         |systemctl status app.service
 
@@ -69,16 +72,16 @@ STEP 3: Launch Ngrok on boot
             - OR replace the pi with daltonkdwyer as usual
 
 
-STEP 2: Launch Chromium on boot, to the right Plntry webpage
+STEP 4: Launch Chromium on boot, to the right Plntry webpage
     1. You wil xterminal to make a terminal run on startup
         a) Tutorial here: https://forums.raspberrypi.com/viewtopic.php?t=66206 (ctrl-f Ragnar)
         b) Install the right package:
         | sudo apt-get install xterm
         c) Create an autostart directory:
-        |mkdir -p ~/.config/autostart
+        | mkdir -p ~/.config/autostart
         d) Go into that directory and create a .desktop file
         |cd /home/pi/.config/autostart (or /home/daltonkdwyer/.config/autostart if you didn’t change username) 
-        |touch plntry33autostart.deßsktop
+        |touch plntry33autostart.desktop
         e) Nano into the file and paste the below
         |nano plntry33autostart.desktop
                 [Desktop Entry]
