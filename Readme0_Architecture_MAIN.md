@@ -21,9 +21,6 @@ II. CHANGE LOG
 5) Made video larger
 6) Redid the ENTIRE webrtc architecture with own signalling server (took like a year)
 
-Next steps:
-    Complete the WebRTC documentation
-    Fix the latency figures
 
 III. GENERAL NOTES
 
