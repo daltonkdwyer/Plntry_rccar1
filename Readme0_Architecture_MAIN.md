@@ -20,6 +20,7 @@ II. CHANGE LOG
 4) Open browser automatically on bootup
 5) Made video larger
 6) Redid the ENTIRE webrtc architecture with own signalling server (took like a year)
+7) Added in a simple latency protection that sends client time to the server, compares it to the server time, and if more than 1000 milliseconds has passed, issues 'Stop' command (but note this is not super accurate)
 
 
 III. GENERAL NOTES
