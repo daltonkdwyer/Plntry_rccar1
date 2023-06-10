@@ -29,11 +29,13 @@ Broadly, this project consists of three components:
 6) Redid the ENTIRE webrtc architecture with own signalling server (took like a year)
 7) Added in a simple latency protection that sends client time to the server, compares it to the server time, and if more than 1000 milliseconds has passed, issues 'Stop' command (but note this is not super accurate)
 
-Got here: added latency code. Now need to test it on the car. You may need to do a git pull for the car
-
-
 3. GENERAL NOTES
 
 - Does not support Chromium! 'On key up' events don't trigger anything
 - To see what Python scripts are running on the Pi, use this command: ps -aef | grep python
 - To stop a process, use 'kill <process ID>'. The process ID is the number in the second column above, maybe 462.
+
+4. CURRENT STATUS
+
+        -- Fri night: Tried out last night's code but had a pretty obvious bug. The latency function was only triggered when receiving a request. Tried to make the function run async all the time, but stuck on how to make a function run async
+        -- Thurs night: added latency code. Now need to test it on the car. You may need to do a git pull for the car
