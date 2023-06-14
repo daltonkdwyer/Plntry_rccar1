@@ -37,5 +37,5 @@ Broadly, this project consists of three components:
 
 4. CURRENT STATUS
 
-        -- Fri night: Tried out last night's code but had a pretty obvious bug. The latency function was only triggered when receiving a request. Tried to make the function run async all the time, but stuck on how to make a function run async
+        -- Fri night: Working in the flask directions app on the car. Tried out last night's code but had a pretty obvious bug. The latency function was only triggered when receiving a request. Tried to make the function run async all the time, but stuck on how to make a function run async
         -- Thurs night: added latency code. Now need to test it on the car. You may need to do a git pull for the car
